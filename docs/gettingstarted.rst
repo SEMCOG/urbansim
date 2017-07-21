@@ -42,8 +42,7 @@ UrbanSim depends on the following libraries, most of which are in Anaconda:
 * `simplejson <http://simplejson.readthedocs.org/en/latest/>`__ >= 3.3
 * `statsmodels <http://statsmodels.sourceforge.net/stable/index.html>`__ >= 0.8.0
 * `tables <http://www.pytables.org/>`__ >= 3.1.0
-* `toolz <http://toolz.readthedocs.org/en/latest/>`__ >= 0.7
-* `zbox <https://github.com/jiffyclub/zbox>`__ >= 1.2
+* `toolz <http://toolz.readthedocs.org/en/latest/>`__ >= 0.8.1
 
 Extras require:
 

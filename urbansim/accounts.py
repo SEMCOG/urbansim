@@ -5,7 +5,7 @@ An Account class for tracking monetary transactions during UrbanSim runs.
 from collections import namedtuple
 
 import pandas as pd
-from zbox import toolz as tz
+import tlz
 
 
 Transaction = namedtuple('Transaction', ('amount', 'subaccount', 'metadata'))
@@ -29,7 +29,7 @@ def _column_names_from_metadata(dicts):
         Unique set of keys.
 
     """
-    return list(tz.unique(tz.concat(dicts)))
+    return list(tlz.unique(tlz.concat(dicts)))
 
 
 class Account(object):
@@ -122,7 +122,7 @@ class Account(object):
         with the account.
 
         """
-        return tz.unique(t.subaccount for t in self.transactions)
+        return tlz.unique(t.subaccount for t in self.transactions)
 
     def iter_subaccounts(self):
         """
@@ -142,7 +142,7 @@ class Account(object):
             t.metadata for t in self.transactions)
 
         def trow(t):
-            return tz.concatv(
+            return tlz.concatv(
                 (t.amount, t.subaccount),
                 (t.metadata.get(c) for c in col_names))
         rows = [trow(t) for t in self.transactions]

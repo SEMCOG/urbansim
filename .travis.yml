@@ -19,7 +19,7 @@ install:
   cytoolz ipython-notebook jinja2 matplotlib numpy pandas patsy pip scipy
   statsmodels pytables pytest pyyaml toolz
 - source activate test-environment
-- pip install orca osmnet pandana bottle simplejson zbox
+- pip install orca osmnet pandana bottle simplejson
 - pip install pytest-cov coveralls pycodestyle
 - pip install .
 before_script:

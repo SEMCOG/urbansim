@@ -8,7 +8,7 @@ import os
 
 import numpy as np
 import pandas as pd
-from zbox import toolz as tz
+import tlz
 
 
 def _mkifnotexists(folder):
@@ -403,7 +403,7 @@ def column_map(tables, columns):
 
     columns = set(columns)
     colmap = {t.name: list(set(t.columns).intersection(columns)) for t in tables}
-    foundcols = tz.reduce(lambda x, y: x.union(y), (set(v) for v in colmap.values()))
+    foundcols = tlz.reduce(lambda x, y: x.union(y), (set(v) for v in colmap.values()))
     if foundcols != columns:
         raise RuntimeError('Not all required columns were found. '
                            'Missing: {}'.format(list(columns - foundcols)))
@@ -430,5 +430,5 @@ def column_list(tables, columns):
 
     """
     columns = set(columns)
-    foundcols = tz.reduce(lambda x, y: x.union(y), (set(t.columns) for t in tables))
+    foundcols = tlz.reduce(lambda x, y: x.union(y), (set(t.columns) for t in tables))
     return list(columns.intersection(foundcols))
