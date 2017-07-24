@@ -48,6 +48,6 @@ setup(
         'toolz>=0.8.1'
     ],
     extras_require={
-        'pandana': ['pandana==0.3.0']
+        'pandana': ['pandana==0.4']
     }
 )
