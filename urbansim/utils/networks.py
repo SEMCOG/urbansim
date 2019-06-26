@@ -29,8 +29,10 @@ def from_yaml(net, cfgname):
 
         decay = variable.get("decay", "linear")
         agg = variable.get("aggregation", "sum")
+        if agg == "aggregation":
+            agg = 'ave'
         vname = variable.get("varname", None)
-        radius = variable["radius"]
+        radius = float(variable["radius"])
         dfname = variable["dataframe"]
 
         flds = [vname] if vname else []
@@ -50,7 +52,7 @@ def from_yaml(net, cfgname):
             radius, agg, decay))
 
         # set the variable
-        net.set(df[node_col], variable=df[vname] if vname else None)
+        net.set(df[node_col], variable=df[vname].astype(float) if vname else None)
         # aggregate it
         nodes[name] = net.aggregate(radius, type=agg, decay=decay)
 
