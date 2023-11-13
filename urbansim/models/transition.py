@@ -60,7 +60,7 @@ def add_rows(data, nrows, starting_index=None, accounting_column=None):
     new_rows = sample_rows(nrows, data, accounting_column=accounting_column)
     copied_index = new_rows.index
     added_index = pd.Index(np.arange(
-        starting_index, starting_index + len(new_rows.index), dtype=np.int))
+        starting_index, starting_index + len(new_rows.index), dtype=int))
     new_rows.index = added_index
 
     logger.debug(
