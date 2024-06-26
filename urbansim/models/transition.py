@@ -307,6 +307,10 @@ class TabularGrowthRateTransition(object):
             # Do not run on segment if it is empty
             if len(subset) == 0:
                 logger.debug('empty segment encountered')
+                # issue #56
+                print("empty segment encountered, use base year hh_seeds ", row)
+                hh_seeds = orca.get_table('hh_seeds').to_frame()
+                subset = util.filter_table(hh_seeds, row, ignore={self._config_column})
                 continue
 
             if self.accounting_column is None:
