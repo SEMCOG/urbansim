@@ -2,7 +2,15 @@ from __future__ import division
 
 import numpy as np
 from numpy.linalg import inv
-from numpy.core.umath_tests import inner1d
+
+try:
+    from numpy.core.umath_tests import inner1d
+except Exception:
+    # numpy.core.umath_tests was a private/test-only module, removed in
+    # later numpy releases. Equivalent: sum of elementwise product over the
+    # last axis.
+    def inner1d(a, b):
+        return np.einsum('...i,...i->...', a, b)
 
 
 def initialize_gpu():
