@@ -3,7 +3,7 @@ import numpy.testing as npt
 import pandas as pd
 import pytest
 
-from pandas.util import testing as pdt
+import pandas.testing as pdt
 
 from .. import transition
 from ...utils import testing as ust

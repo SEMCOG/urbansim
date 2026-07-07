@@ -389,9 +389,9 @@ class SqFtProForma(object):
                 df['ave_cost_sqft'] = (df.cost / df.total_built_sqft) * c.profit_factor
 
                 if name == 'retail':
-                    df['ave_cost_sqft'][c.fars > c.max_retail_height] = np.nan
+                    df.loc[c.fars > c.max_retail_height, 'ave_cost_sqft'] = np.nan
                 if name == 'industrial':
-                    df['ave_cost_sqft'][c.fars > c.max_industrial_height] = np.nan
+                    df.loc[c.fars > c.max_industrial_height, 'ave_cost_sqft'] = np.nan
 
                 df_d[(name, parking_config)] = df
 
@@ -701,9 +701,9 @@ class SqFtProForma(object):
             del sumdf['far']
 
             if share is None:
-                share = plt.subplot(len(keys) / 2, 2, cnt)
+                share = plt.subplot(len(keys) // 2, 2, cnt)
             else:
-                plt.subplot(len(keys) / 2, 2, cnt, sharex=share, sharey=share)
+                plt.subplot(len(keys) // 2, 2, cnt, sharex=share, sharey=share)
 
             handles = plt.plot(far, sumdf)
             plt.ylabel('even_rent')

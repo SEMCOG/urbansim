@@ -3,6 +3,7 @@ Utilities used within the ``urbansim.models`` package.
 
 """
 import collections
+import collections.abc
 import logging
 import numbers
 try:
@@ -199,7 +200,7 @@ def str_model_expression(expr, add_constant=True):
 
     """
     if not isinstance(expr, str):
-        if isinstance(expr, collections.Mapping):
+        if isinstance(expr, collections.abc.Mapping):
             left_side = expr.get('left_side')
             right_side = str_model_expression(expr['right_side'], add_constant)
         else:

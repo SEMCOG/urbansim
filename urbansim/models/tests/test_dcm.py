@@ -5,7 +5,7 @@ import pytest
 import os
 import tempfile
 import yaml
-from pandas.util import testing as pdt
+import pandas.testing as pdt
 
 from ...utils import testing
 

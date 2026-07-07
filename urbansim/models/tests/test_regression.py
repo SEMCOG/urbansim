@@ -11,7 +11,7 @@ import pandas as pd
 import pytest
 import statsmodels.formula.api as smf
 import yaml
-from pandas.util import testing as pdt
+import pandas.testing as pdt
 
 from statsmodels.regression.linear_model import RegressionResultsWrapper
 
